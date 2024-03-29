@@ -1,3 +1,9 @@
+"""
+Creates a Flask application instance with the given configuration.
+
+Initializes SQLAlchemy with the given database URI and connects it to the
+application instance. Returns the configured Flask application instance.
+"""
 import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
