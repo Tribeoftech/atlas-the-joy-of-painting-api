@@ -5,6 +5,8 @@ Contains:
 - Episode_Dates: SQLAlchemy ORM model class for episode_dates table.
   Has id, title, and episode_date columns.
 """
+import pandas as pd 
+from sqlalchemy import create_engine
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 
