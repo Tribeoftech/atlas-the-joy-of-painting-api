@@ -1,15 +1,9 @@
 #!/usr/bin/python3
 """ Application for Joy of Coding project """
-from flask import flash, Flask, redirect, render_template, request
-from flask_bcrypt import Bcrypt
-from flask_login import current_user, LoginManager, login_user, logout_user, UserMixin
-from flask_marshmallow import Marshmallow
-from flask_sqlalchemy import SQLAlchemy
-from flask_wtf import FlaskForm
+
 from wtforms import BooleanField, StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Length
 import random
-import socketio
 import sqlitedb
 import uuid
 
@@ -25,7 +19,7 @@ db = SQLAlchemy(app)
 mm = Marshmallow(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
-bcrypt = Bcrypt()
+
 
 @login_manager.user_loader
 def load_user(user_id):
