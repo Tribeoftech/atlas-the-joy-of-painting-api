@@ -21,18 +21,24 @@ try:
         # Insert episodes data
         for index, row in episodes_data.iterrows():
             sql = "INSERT INTO Episode (title, season, episode_number, air_date, description) VALUES (%s, %s, %s, %s, %s)"
-            cursor.execute(sql, (row['title'], row['season'], row['episode_number'], row['air_date'], row['description']))
-        
+            cursor.execute(
+                sql,
+                (row['title'],
+                 row['season'],
+                    row['episode_number'],
+                    row['air_date'],
+                    row['description']))
+
         # Insert artists data
         for index, row in artists_data.iterrows():
             sql = "INSERT INTO Artist (name) VALUES (%s)"
             cursor.execute(sql, (row['name'],))
-        
+
         # Insert techniques data
         for index, row in techniques_data.iterrows():
             sql = "INSERT INTO PaintingTechnique (name) VALUES (%s)"
             cursor.execute(sql, (row['name'],))
-    
+
     # Commit changes
     connection.commit()
     print("Data successfully imported into the database.")
