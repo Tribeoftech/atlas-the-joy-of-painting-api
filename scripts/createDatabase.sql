@@ -1,38 +1,9 @@
-/**
- * Creates a table to store episode date information.
- * - id: Primary key column.
- * - title: Episode title text. 
- * - episode_date: Date the episode aired.
- */
-
 CREATE TABLE IF NOT EXISTS episode_dates(
 	id SERIAL PRIMARY KEY,
 	title text NOT NULL,
 	episode_date text NOT NULL
 );
 
-/**
- * Creates tables to store episode data:
- * 
- * - colors_used: Stores data on colors used in each episode painting
- *    - id: Primary key 
- *    - painting_index: Index of the painting in the episode 
- *    - img_src: Image source URL
- *    - painting_title: Title of the painting
- *    - season: Season number 
- *    - episode: Episode number
- *    - num_colors: Number of colors used
- *    - youtube_src: YouTube video source URL  
- *    - colors: Array of color names used
- *    - color_hex: Array of color hex values used  
- *    - Columns for number of times each color used
- *      
- * - subject_matter: Stores data on subject matter in each episode
- *    - id: Primary key
- *    - episode: Episode number
- *    - title: Episode title
- *    - Columns for presence of different subject matter
- */
 CREATE TABLE IF NOT EXISTS colors_used(
 	id SERIAL PRIMARY KEY,
 	painting_index INTEGER NOT NULL,
