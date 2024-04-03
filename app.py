@@ -1,5 +1,5 @@
 """
-Creates a Flask application instance with SQLAlchemy integration.
+Dis
 
 Configures SQLAlchemy to use PostgreSQL and initializes it with the app.
 """
