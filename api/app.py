@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """App.py application module"""
-import pymysql
-import json
+
 from flask import Flask, render_template, jsonify
 from flask_mysqldb import MySQL, MySQLdb
 
