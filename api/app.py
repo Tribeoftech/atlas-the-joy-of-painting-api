@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'new_password'
-app.config['MYSQL_DB'] = 'bob_ross_database'
+app.config['MYSQL_DB'] = 'database'
 # Update the MySQL plugin to auth_socket
 app.config['MYSQL_AUTH_PLUGIN'] = 'auth_socket'
 
