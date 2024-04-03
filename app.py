@@ -1,22 +1,47 @@
-"""
-Dis
+#!/usr/bin/python3
+"""App.py application module"""
+import pymysql
+import json
+from flask import Flask, render_template, jsonify
+from flask_mysqldb import MySQL, MySQLdb
 
-Configures SQLAlchemy to use PostgreSQL and initializes it with the app.
-"""
-import os
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+app = Flask(__name__)
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = '1234'
+app.config['MYSQL_DB'] = 'joy_of_painting'
+# Update the MySQL plugin to auth_socket
+app.config['MYSQL_AUTH_PLUGIN'] = 'auth_socket'
 
-db = SQLAlchemy()
+mysql = MySQL(app)
 
-def create_app():
-    app = Flask(__name__)
-    # Specify the PostgreSQL dialect explicitly
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'postgresql://postgres:hank@localhost:5432/postgres')
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    db.init_app(app)
-    return app
+@app.route("/", methods=['GET', 'POST', 'PUT'])
+def home():
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cursor.execute("SELECT episode, title FROM main_data")
+    rows = cursor.fetchall()
+    episodes = []
+    content = {}
+    for result in rows:
+        content = {'episode': result['episode'], 'title': result['title']}
+        episodes.append(content)
+    if episodes == []:
+        episodes = {'Error': "No episodes"}
+    return jsonify(episodes)
 
-if __name__ == '__main__':
-    app = create_app()
-    app.run()
+@app.route("/month=<month>", methods=['GET', 'POST', 'PUT'])
+def month(month):
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cursor.execute("SELECT episode, title FROM main_data where date = %s", [month])
+    rows = cursor.fetchall()
+    episodes = []
+    content = {}
+    for result in rows:
+        content = {'episode': result['episode'], 'title': result['title']}
+        episodes.append(content)
+    if episodes == []:
+        episodes = {'Error': "No episode made in {}".format(month)}
+    return jsonify(episodes)
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8000, debug=True)
