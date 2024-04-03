@@ -15,6 +15,7 @@ app.config['MYSQL_AUTH_PLUGIN'] = 'auth_socket'
 
 mysql = MySQL(app)
 
+
 @app.route("/", methods=['GET', 'POST', 'PUT'])
 def home():
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
@@ -29,6 +30,7 @@ def home():
         episodes = {'Error': "No episodes"}
     return jsonify(episodes)
 
+
 @app.route("/month=<month>", methods=['GET', 'POST', 'PUT'])
 def month(month):
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
@@ -42,6 +44,7 @@ def month(month):
     if episodes == []:
         episodes = {'Error': "No episode made in {}".format(month)}
     return jsonify(episodes)
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000, debug=True)
