@@ -1,6 +1,6 @@
 """ Driver program for application """
-from api.v1.episodes import models, views
-from engine.db import engine, sessionmaker
+from api.v2.episodes import models, views
+from engine.db2 import engine, sessionmaker
 from fastapi import FastAPI
 
 # Bind engine to database with models and views
