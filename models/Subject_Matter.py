@@ -1,3 +1,7 @@
+"""Declares the Subject_Matter model for storing subject matter tag counts for Bob Ross paintings.
+
+Contains columns for episode number, title, and tag counts for the different subject matters detected in the paintings. 
+"""
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 

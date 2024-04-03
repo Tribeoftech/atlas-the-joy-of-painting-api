@@ -1,3 +1,10 @@
+"""
+Declares Colors_Used model for storing information about the colors Bob Ross used in each painting episode.
+
+Contains columns for painting index, image source, title, season, episode, number of colors, YouTube video source, color names, color hex values, and counts for each individual color used.
+
+Serves as main repository of color data for analysis and tracking color usage across episodes.
+"""
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 

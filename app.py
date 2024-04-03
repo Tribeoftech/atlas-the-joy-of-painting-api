@@ -1,3 +1,8 @@
+"""
+Creates a Flask application instance with SQLAlchemy integration.
+
+Configures SQLAlchemy to use PostgreSQL and initializes it with the app.
+"""
 import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
