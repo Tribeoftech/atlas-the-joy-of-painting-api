@@ -51,4 +51,4 @@ SQLAlchemy (1.4.31)
 You can add new episodes to the Database using a POST request to `http://127.0.0.1:8000/api/{ep_id}`  or delete entries by making a DELETE request to the same endpoint.
 
 ## Author
-Tim Simms
+Alex Dipboye
